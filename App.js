@@ -7,7 +7,7 @@ export default function App() {
 
   const handlePress = () => {
     getApiData()
-  };
+  }
 
   return (
     <View style={styles.container}>
@@ -18,7 +18,7 @@ export default function App() {
       <Button title="Luo uusi lause" onPress={handlePress}></Button>
       <StatusBar style="auto" />
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
   },
-});
+})
