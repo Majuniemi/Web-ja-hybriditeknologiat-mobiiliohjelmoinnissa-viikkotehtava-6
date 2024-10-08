@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Satunnaislauseiden generaattori</Text>
+      <Text style={styles.header}>Korporaatiomaailman lausegeneraattori</Text>
       <Text style={styles.text}>{sentence}</Text>
       <Button title='Luo lause' onPress={handleClick}></Button>
       <StatusBar style="auto" />
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
   text: {
     marginBottom: 32,
-    paddingHorizontal: 40,
+    paddingHorizontal: 48,
     fontSize: 16,
     textAlign: 'center',
   }
