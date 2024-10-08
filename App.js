@@ -1,25 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
-import React, { useState } from 'react';
-import { getApiData } from './hooks/getData'
-
-const url = 'https://corporatebs-generator.sameerkumar.website'
+import { StatusBar } from 'expo-status-bar'
+import { Button, StyleSheet, Text, View } from 'react-native'
+import useApiData from './hooks/getData'
 
 export default function App() {
-  const [sentence, setSentence] = useState('Luo lause painamalla nappia')
+  const { data, loading, error, getApiData } = useApiData()
 
-  const handleClick = () => {
-    getApiData(url)
-      .then(data => {
-        setSentence(data.phrase)
-      })
-  }
+  const handlePress = () => {
+    getApiData()
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Korporaatiomaailman lausegeneraattori</Text>
-      <Text style={styles.text}>{sentence}</Text>
-      <Button title='Luo lause' onPress={handleClick}></Button>
+      <Text style={styles.header}>Lausegeneraattori pöhisijälle</Text>
+      {loading && <Text style={styles.text}>Ladataan...</Text>}
+      {error && <Text style={styles.text}>{error}</Text>}
+      {!loading && data && <Text style={styles.text}>{data.phrase}</Text>}
+      <Button title="Luo uusi lause" onPress={handlePress}></Button>
       <StatusBar style="auto" />
     </View>
   );
@@ -35,12 +31,12 @@ const styles = StyleSheet.create({
   header: {
     marginBottom: 32,
     fontSize: 20,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   text: {
     marginBottom: 32,
     paddingHorizontal: 48,
     fontSize: 16,
     textAlign: 'center',
-  }
+  },
 });
